@@ -1,131 +1,125 @@
 import React from 'react';
-import { Code, Brain, Zap } from 'lucide-react';
+import { User, Target, Heart, Zap } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
     <section id="about" className="py-20 px-4">
       <div className="container mx-auto">
-        <div className="bg-white/5 rounded-2xl p-8 md:p-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Content */}
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Conheça{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                    Jair Rodrigo
-                  </span>
-                </h2>
-                
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-blue-400 mb-3">Especialista em Automação de Negócios</h3>
-                  <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                    Consultor e desenvolvedor especializado em soluções automatizadas que transformam pequenos e médios negócios através da tecnologia inteligente.
-                  </p>
+        <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
+                Sobre{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                  Jair Cloud
+                </span>
+              </h2>
+              
+              {/* Profile Card */}
+              <div className="bg-gradient-to-br from-jair-blue/10 to-cyan-500/10 border border-jair-blue/20 rounded-xl p-10 max-w-2xl mx-auto mb-16">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-jair-blue/20 rounded-full flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                    <img 
+                      src="/fotojair.png" 
+                      alt="Jair Rodrigo" 
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                  <h4 className="text-2xl font-bold text-white mb-3">Jair Rodrigo</h4>
+                  <p className="text-blue-400 mb-6 text-lg">Especialista em Automação & IA</p>
+                  <div className="mt-6">
+                    <p className="text-gray-300 mb-4 leading-relaxed text-base">
+                      Me chamo Jair Rodrigo e moro em Sorocaba. Ajudo empresas a otimizar processos e 
+                      atendimento criando sites, sistemas e automação com IA.
+                    </p>
+                    <p className="text-gray-300 mb-4 leading-relaxed text-base">
+                      Cada projeto que desenvolvo recebe minha atenção completa. Não sou apenas mais um 
+                      desenvolvedor - sou seu parceiro dedicado na transformação digital do seu negócio.
+                    </p>
+                    <p className="text-gray-300 text-base italic">
+                      "Otimizo processos e atendimento através de tecnologia inteligente"
+                    </p>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="bg-jair-blue/5 rounded-lg p-6 mb-8">
-                  <h4 className="text-lg font-semibold text-blue-400 mb-3">🎯 Minha Missão</h4>
-                  <p className="text-gray-300">
-                    Democratizar o acesso à automação inteligente para empresários que querem crescer sem depender só da força de trabalho manual.
-                  </p>
-                </div>
-                
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-jair-blue/10 rounded-full flex items-center justify-center mt-1">
-                      <Code className="w-4 h-4 text-blue-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Expertise Profissional</h3>
-                      <p className="text-gray-300">5+ anos desenvolvendo soluções automatizadas. Especialista em Inteligência Artificial aplicada a negócios.</p>
-                    </div>
+            {/* Contact Section */}
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-white mb-8">
+                Entre em{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                  Contato
+                </span>
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* WhatsApp */}
+                <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-6 hover:border-jair-blue/40 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group">
+                  <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
+                    <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
                   </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-jair-blue/10 rounded-full flex items-center justify-center mt-1">
-                      <Brain className="w-4 h-4 text-blue-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Consultor em Otimização</h3>
-                      <p className="text-gray-300">Análise de processos empresariais e desenvolvimento de sistemas integrados com foco total em ROI.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-jair-blue/10 rounded-full flex items-center justify-center mt-1">
-                      <Zap className="w-4 h-4 text-blue-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Resultados Mensuráveis</h3>
-                      <p className="text-gray-300">Projetos que geram economia de tempo, aumento de vendas e satisfação do cliente. Atendimento personalizado de Sorocaba/SP.</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                  <h4 className="text-xl font-bold text-white mb-2">WhatsApp</h4>
+                  <p className="text-gray-300 mb-6">Resposta rápida e atendimento personalizado</p>
                   <a
                     href="https://wa.me/5515988213309"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
                   >
-                    <span>Quero Conhecer o Especialista</span>
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                    <span>Chamar no WhatsApp</span>
                   </a>
-                  
+                </div>
+
+                {/* Email */}
+                <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-6 hover:border-jair-blue/40 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group">
+                  <div className="w-16 h-16 bg-jair-blue/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-jair-blue/20 transition-colors">
+                    <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-2">E-mail</h4>
+                  <p className="text-gray-300 mb-6">Para propostas e informações detalhadas</p>
+                  <a
+                    href="mailto:jairautomacoes@gmail.com"
+                    className="inline-flex items-center justify-center space-x-2 bg-jair-blue hover:bg-jair-blue-dark text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span>Enviar E-mail</span>
+                  </a>
+                </div>
+
+                {/* Instagram */}
+                <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-6 hover:border-jair-blue/40 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group">
+                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-pink-500/20 group-hover:to-purple-500/20 transition-colors">
+                    <svg className="w-8 h-8 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.52.204 5.02.43a5.105 5.105 0 00-1.852 1.207 5.105 5.105 0 00-1.207 1.852C1.734 4.02 1.612 4.594 1.578 5.541 1.544 6.49 1.53 6.896 1.53 10.518s.013 4.028.048 4.976c.034.947.156 1.521.382 2.021a5.105 5.105 0 001.207 1.852 5.105 5.105 0 001.852 1.207c.5.226 1.074.348 2.021.382.947.035 1.354.048 4.976.048s4.028-.013 4.976-.048c.947-.034 1.521-.156 2.021-.382a5.105 5.105 0 001.852-1.207 5.105 5.105 0 001.207-1.852c.226-.5.348-1.074.382-2.021.035-.947.048-1.354.048-4.976s-.013-4.028-.048-4.976c-.034-.947-.156-1.521-.382-2.021a5.105 5.105 0 00-1.207-1.852A5.105 5.105 0 0016.037.43C15.537.204 14.963.082 14.016.048 13.067.013 12.661 0 12.017 0zm0 2.17c3.304 0 3.648.012 4.93.07.3.055.602.166.822.275a2.678 2.678 0 011.02.66c.311.311.549.677.66 1.02.11.22.22.522.275.822.058 1.281.07 1.625.07 4.93s-.012 3.648-.07 4.93c-.055.3-.166.602-.275.822a2.678 2.678 0 01-.66 1.02c-.311.311-.677.549-1.02.66-.22.11-.522.22-.822.275-1.281.058-1.625.07-4.93.07s-3.648-.012-4.93-.07a2.678 2.678 0 01-.822-.275 2.678 2.678 0 01-1.02-.66 2.678 2.678 0 01-.66-1.02 2.678 2.678 0 01-.275-.822c-.058-1.281-.07-1.625-.07-4.93s.012-3.648.07-4.93c.055-.3.166-.602.275-.822.11-.343.349-.709.66-1.02.311-.311.677-.549 1.02-.66.22-.11.522-.22.822-.275 1.281-.058 1.625-.07 4.93-.07L12.017 2.17zm0 3.405a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.14a3.205 3.205 0 110-6.41 3.205 3.205 0 010 6.41zm5.338-8.34a1.154 1.154 0 11-2.308 0 1.154 1.154 0 012.308 0z"/>
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-2">Instagram</h4>
+                  <p className="text-gray-300 mb-6">Acompanhe projetos e novidades</p>
                   <a
                     href="https://instagram.com/jair.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-transparent border border-jair-blue text-jair-blue hover:bg-jair-blue hover:text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
                   >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.52.204 5.02.43a5.105 5.105 0 00-1.852 1.207 5.105 5.105 0 00-1.207 1.852C1.734 4.02 1.612 4.594 1.578 5.541 1.544 6.49 1.53 6.896 1.53 10.518s.013 4.028.048 4.976c.034.947.156 1.521.382 2.021a5.105 5.105 0 001.207 1.852 5.105 5.105 0 001.852 1.207c.5.226 1.074.348 2.021.382.947.035 1.354.048 4.976.048s4.028-.013 4.976-.048c.947-.034 1.521-.156 2.021-.382a5.105 5.105 0 001.852-1.207 5.105 5.105 0 001.207-1.852c.226-.5.348-1.074.382-2.021.035-.947.048-1.354.048-4.976s-.013-4.028-.048-4.976c-.034-.947-.156-1.521-.382-2.021a5.105 5.105 0 00-1.207-1.852A5.105 5.105 0 0016.037.43C15.537.204 14.963.082 14.016.048 13.067.013 12.661 0 12.017 0zm0 2.17c3.304 0 3.648.012 4.93.07.3.055.602.166.822.275a2.678 2.678 0 011.02.66c.311.311.549.677.66 1.02.11.22.22.522.275.822.058 1.281.07 1.625.07 4.93s-.012 3.648-.07 4.93c-.055.3-.166.602-.275.822a2.678 2.678 0 01-.66 1.02c-.311.311-.677.549-1.02.66-.22.11-.522.22-.822.275-1.281.058-1.625.07-4.93.07s-3.648-.012-4.93-.07a2.678 2.678 0 01-.822-.275 2.678 2.678 0 01-1.02-.66 2.678 2.678 0 01-.66-1.02 2.678 2.678 0 01-.275-.822c-.058-1.281-.07-1.625-.07-4.93s.012-3.648.07-4.93c.055-.3.166-.602.275-.822.11-.343.349-.709.66-1.02.311-.311.677-.549 1.02-.66.22-.11.522-.22.822-.275 1.281-.058 1.625-.07 4.93-.07L12.017 2.17zm0 3.405a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.14a3.205 3.205 0 110-6.41 3.205 3.205 0 010 6.41zm5.338-8.34a1.154 1.154 0 11-2.308 0 1.154 1.154 0 012.308 0z"/>
+                    </svg>
                     <span>@jair.cloud</span>
                   </a>
-                  
-                  <a
-                    href="mailto:jairautomacoes@gmail.com"
-                    className="inline-flex items-center space-x-2 bg-transparent border border-jair-blue text-jair-blue hover:bg-jair-blue hover:text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5"
-                  >
-                    <span>E-mail</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Photo */}
-              <div className="flex justify-center lg:justify-end">
-                <div className="relative">
-                  {/* Background gradient circle */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-jair-blue/20 to-cyan-500/20 rounded-full blur-xl"></div>
-                  
-                  {/* Photo container */}
-                  <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-jair-blue/30 shadow-2xl shadow-jair-blue/20">
-                    <img
-                      src="/fotojair.png"
-                      alt="Jair Rodrigo - Desenvolvedor especializado em IA e automação"
-                      className="w-full h-full object-cover object-center"
-                      onError={(e) => {
-                        // Fallback caso a imagem não carregue
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const fallback = target.nextElementSibling as HTMLElement;
-                        if (fallback) fallback.style.display = 'flex';
-                      }}
-                    />
-                    
-                    {/* Fallback placeholder */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-jair-blue/20 to-cyan-500/20 flex items-center justify-center" style={{ display: 'none' }}>
-                      <div className="w-32 h-32 bg-jair-blue/10 rounded-full flex items-center justify-center">
-                        <Code className="w-16 h-16 text-blue-400" />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Design clean sem elementos decorativos */}
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
       </div>
     </section>

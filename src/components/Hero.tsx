@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Sparkles } from 'lucide-react';
+import { MessageCircle, Calendar } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -8,65 +8,41 @@ const Hero: React.FC = () => {
         <div className="max-w-4xl mx-auto relative z-0">
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Transforme Seu{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Negócio
+              Sites
             </span>{' '}
-            com IA que Atende{' '}
+            e{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Clientes 24h
+              Automações
             </span>{' '}
-            no WhatsApp
+            que Vendem 24h
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            <span className="text-blue-400">Especialista em Automação de Negócios.</span> Desenvolvo soluções inteligentes que convertem visitantes em clientes enquanto você dorme. Sites modernos + IA no WhatsApp + Sistemas que{' '}
-            <span className="text-blue-400">realmente funcionam</span>.
-          </p>
+          <span className="text-blue-400">Especialista em Desenvolvimento Web e Automação com IA.</span> Crio sites profissionais e automações inteligentes para WhatsApp que <span className="text-blue-400">trabalham 24h por você</span>.
+        </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* CTA Button */}
+          <div className="flex justify-center mb-8">
             <a
-              href="https://wa.me/5515988213309"
+              href="https://wa.me/5515988213309?text=Olá! Gostaria de conhecer seus serviços e agendar uma conversa."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5"
+              className="inline-flex items-center space-x-3 bg-gradient-primary text-white px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 text-xl font-semibold"
             >
-              <MessageCircle size={24} />
-              <span className="text-lg font-semibold">Quero Minha Consultoria Gratuita</span>
-            </a>
-            
-            <a
-              href="https://wa.me/5515988213309"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-transparent border-2 border-jair-blue text-jair-blue hover:bg-jair-blue hover:text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5"
-            >
-              <Sparkles size={24} />
-              <span className="text-lg font-semibold">Ver Projetos Reais</span>
+              <MessageCircle className="w-7 h-7" />
+              <span>Quero Conversar Agora</span>
             </a>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-jair-blue/20">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-jair-blue">24/7</div>
-              <div className="text-gray-400">Atendimento IA</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-jair-blue">100%</div>
-              <div className="text-gray-400">Personalizado</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-jair-blue">5+</div>
-              <div className="text-gray-400">Anos Experiência</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-jair-blue">60</div>
-              <div className="text-gray-400">Dias Garantia</div>
-            </div>
+          {/* Trust Badge */}
+          <div className="mb-12">
+            <p className="text-sm text-gray-400 mb-2">✅ Consultoria inicial gratuita</p>
+            <p className="text-sm text-gray-400">🤖 Agente de IA disponível 24h no WhatsApp para tirar dúvidas</p>
           </div>
+
+
         </div>
       </div>
     </section>

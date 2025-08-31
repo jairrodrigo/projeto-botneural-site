@@ -1,38 +1,30 @@
 import React from 'react';
-import AnimatedBackground from './components/AnimatedBackground';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Problems from './components/Problems';
 import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import AIDemo from './components/AIDemo';
-import Differentials from './components/Differentials';
 import About from './components/About';
+import Process from './components/Process';
 import Testimonials from './components/Testimonials';
-import FinalCTA from './components/FinalCTA';
+import AIDemo from './components/AIDemo';
 import Contact from './components/Contact';
-import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   return (
-    <div className="bg-black min-h-screen relative overflow-x-hidden">
+    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
       <AnimatedBackground />
-      <Header />
-      <main className="relative z-10">
+      <div className="relative z-10">
+        <Header />
         <Hero />
         <Problems />
         <Services />
-        <Portfolio />
-        <AIDemo />
-        <Differentials />
-        <About />
+        <Process />
         <Testimonials />
-        <FinalCTA />
+        <AIDemo />
         <Contact />
-        <FAQ />
-      </main>
-      <div className="relative z-10">
+        <About />
         <Footer />
       </div>
     </div>

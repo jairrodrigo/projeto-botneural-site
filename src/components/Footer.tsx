@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Description */}
           <div>
-            <div className="text-2xl font-bold text-white mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-blue-400">Jair</span><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-500">.cloud</span>
+            <div className="text-2xl font-bold text-white mb-4 overflow-visible">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Jair</span><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">.cloud</span>
             </div>
             <p className="text-gray-400 mb-6">
               Desenvolvimento de sites inteligentes e automações com IA para transformar seu negócio.

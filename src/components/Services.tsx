@@ -1,31 +1,37 @@
 import React from 'react';
-import { Globe, MessageCircle, Calendar, CreditCard } from 'lucide-react';
+import { Globe, MessageCircle, Brain } from 'lucide-react';
 
 const Services: React.FC = () => {
-  const services = [
+  const mainServices = [
     {
+      category: "DESENVOLVIMENTO WEB",
       icon: Globe,
-      title: 'Desenvolvimento de Sites Inteligentes',
-      description: 'Sites modernos que não só atraem, mas convertem visitantes em clientes através de automações inteligentes.',
-      features: ['Design responsivo e otimizado', 'Integração direta com WhatsApp', 'IA que qualifica leads automaticamente', 'Velocidade superior para melhor posicionamento']
+      title: "Sites e Sistemas Profissionais",
+      subtitle: "Presença digital que gera resultados",
+      features: [
+        "Sites responsivos e modernos",
+        "E-commerce otimizado para vendas (Loja Online)",
+        "Sistemas web personalizados",
+        "SEO e velocidade otimizados",
+        "Integração opcional com IA"
+      ],
+      cta: "Quero um Site",
+      whatsappText: "Olá! Quero saber mais sobre desenvolvimento de sites profissionais."
     },
     {
+      category: "AUTOMAÇÃO INTELIGENTE",
       icon: MessageCircle,
-      title: 'Automação Inteligente via WhatsApp',
-      description: 'Sistemas avançados de atendimento que conversam naturalmente e vendem seus produtos/serviços 24 horas por dia.',
-      features: ['Respostas humanizadas e inteligentes', 'Qualificação automática de leads', 'Integração com seus sistemas existentes', 'Relatórios detalhados de performance']
-    },
-    {
-      icon: Calendar,
-      title: 'Gestão de Automação Empresarial',
-      description: 'Soluções sob medida para automatizar processos e otimizar operações do seu negócio.',
-      features: ['Agendamento automático', 'Controle de estoque inteligente', 'Cobrança e lembretes automatizados', 'Dashboards em tempo real']
-    },
-    {
-      icon: CreditCard,
-      title: 'Consultoria em Automação',
-      description: 'Análise completa do seu negócio para identificar oportunidades de automação e otimização de processos.',
-      features: ['Análise de processos atuais', 'Identificação de gargalos', 'Estratégia de implementação', 'Treinamento da equipe']
+      title: "WhatsApp com IA Avançada",
+      subtitle: "Atendimento 24h que entende tudo",
+      features: [
+        "Entende áudio, imagem e arquivos",
+        "Agendamentos automáticos",
+        "Processamento de pagamentos",
+        "Conversação natural com IA",
+        "Conhecimento sobre seu negócio"
+      ],
+      cta: "Quero Automatizar",
+      whatsappText: "Olá! Quero saber mais sobre automação WhatsApp com IA."
     }
   ];
 
@@ -37,43 +43,55 @@ const Services: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Soluções que{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                Automatizam
-              </span>{' '}
+              Trabalhamos
+            </span>{' '}
               seu Negócio
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Especialista em automação de negócios. Transformo processos manuais em sistemas inteligentes que trabalham 24h por você.
+              Especialista em desenvolvimento web e automação com IA. Transformo ideias em soluções digitais que trabalham 24h por você.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {services.map((service, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {mainServices.map((service, index) => (
               <div
                 key={index}
                 className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-8 hover:border-jair-blue/40 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group hover:shadow-lg hover:shadow-jair-blue/20"
               >
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-jair-blue/10 to-jair-blue/5 border-2 border-jair-blue/20 rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-jair-blue/20 group-hover:to-jair-blue/10 group-hover:border-jair-blue/40 transition-all duration-300 shadow-lg shadow-jair-blue/10 group-hover:shadow-jair-blue/20">
-                    <service.icon className="w-8 h-8 text-blue-400" />
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center space-x-2 bg-jair-blue/10 border border-jair-blue/20 rounded-full px-4 py-2 mb-4">
+                    <service.icon className="w-4 h-4 text-blue-400" />
+                    <span className="text-blue-400 text-sm font-semibold">{service.category}</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                  <h3 className="text-3xl font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-xl text-gray-300 mb-6">{service.subtitle}</p>
                 </div>
                 
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-2">
+                <ul className="space-y-3 mb-8">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                    <li key={idx} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0" />
                       <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
+                
+                <div className="text-center">
+                  <a
+                    href={`https://wa.me/5515988213309?text=${encodeURIComponent(service.whatsappText)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold"
+                  >
+                    <MessageCircle size={20} />
+                    <span>{service.cta}</span>
+                  </a>
+                </div>
               </div>
             ))}
           </div>
+
+
         </div>
       </div>
     </section>
