@@ -1,12 +1,55 @@
-import React from 'react';
-import { MessageCircle, Zap, Bot } from 'lucide-react';
+import React, { useState } from 'react';
+import { MessageCircle, Zap, Bot, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
 const AIDemo: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Flashback Fest",
+      description: "Site de evento musical com design moderno e responsivo",
+      category: "Site Corporativo",
+      url: "https://flashback.jair.cloud/",
+      icon: MessageCircle,
+      image: "/flashback_capa_demo.png",
+      features: ["Design Responsivo", "Animações CSS", "SEO Otimizado"]
+    },
+    {
+      id: 2,
+      title: "Dr. Silva",
+      description: "Landing page para clínica médica com agendamento online",
+      category: "Site Médico",
+      url: "https://clinicadrsilva.jair.cloud/",
+      icon: Zap,
+      image: "/clinicadrsilva_capa_demo.png",
+      features: ["Agendamento Online", "Interface Limpa", "Mobile First"]
+    },
+    {
+      id: 3,
+      title: "Pulseirinhas",
+      description: "E-commerce de acessórios com carrinho de compras",
+      category: "E-commerce",
+      url: "https://pulseirinhas.jair.cloud/",
+      icon: Bot,
+      image: "/pulseirinhas_capa_demo.png",
+      features: ["Carrinho de Compras", "Catálogo Dinâmico", "Checkout Integrado"]
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
   return (
     <section id="demo" className="py-20 px-4">
       <div className="container mx-auto">
         <div className="bg-gradient-demo rounded-2xl p-8 md:p-12">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <div className="inline-flex items-center space-x-2 bg-jair-blue/10 border border-jair-blue/20 rounded-full px-4 py-2 mb-8">
               <Bot className="w-4 h-4 text-blue-400" />
               <span className="text-blue-400 text-sm">Projetos Demonstrativos</span>
@@ -24,60 +67,124 @@ const AIDemo: React.FC = () => {
               <span className="text-blue-400">confidencialidade e respeito aos nossos clientes</span>, apresentamos apenas projetos de demonstração que ilustram nossas capacidades.
             </p>
 
-            {/* Demo Features */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-6 hover:border-jair-blue/40 transition-all duration-300">
-                <div className="w-12 h-12 bg-jair-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageCircle className="w-6 h-6 text-blue-400" />
+            {/* Carrossel de Projetos */}
+            <div className="relative mb-12">
+              {/* Navegação */}
+              <div className="flex justify-between items-center mb-8">
+                <button
+                  onClick={prevSlide}
+                  className="p-3 bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-full hover:border-jair-blue/40 transition-all duration-300 hover:bg-jair-blue/10"
+                >
+                  <ChevronLeft className="w-6 h-6 text-blue-400" />
+                </button>
+                
+                <div className="flex space-x-2">
+                  {projects.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentSlide ? 'bg-blue-400' : 'bg-white/20'
+                      }`}
+                    />
+                  ))}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Sites Corporativos</h3>
-                <p className="text-gray-300 text-sm">Projetos demonstrativos de sites empresariais e institucionais</p>
+                
+                <button
+                  onClick={nextSlide}
+                  className="p-3 bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-full hover:border-jair-blue/40 transition-all duration-300 hover:bg-jair-blue/10"
+                >
+                  <ChevronRight className="w-6 h-6 text-blue-400" />
+                </button>
               </div>
 
-              <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-6 hover:border-jair-blue/40 transition-all duration-300">
-                <div className="w-12 h-12 bg-jair-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">E-commerce Demo</h3>
-                <p className="text-gray-300 text-sm">Lojas virtuais demonstrativas com funcionalidades completas</p>
-              </div>
+              {/* Card do Projeto */}
+              <div className="overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {projects.map((project) => {
+                    const IconComponent = project.icon;
+                    return (
+                      <div key={project.id} className="w-full flex-shrink-0 px-4">
+                        <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-2xl overflow-hidden hover:border-jair-blue/40 transition-all duration-300 max-w-2xl mx-auto">
+                          {/* Imagem de Capa */}
+                          <div className="relative h-48 overflow-hidden">
+                            <img 
+                              src={project.image} 
+                              alt={`Preview do ${project.title}`}
+                              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                              onError={(e) => {
+                                e.currentTarget.src = `data:image/svg+xml;base64,${btoa(`
+                                  <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="200" fill="#f3f4f6"/>
+                                    <text x="200" y="100" text-anchor="middle" fill="#9ca3af" font-family="Arial" font-size="16">Imagem não encontrada</text>
+                                  </svg>
+                                `)}`;
+                              }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                            <div className="absolute top-4 right-4">
+                              <a
+                                href={project.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-jair-blue/80 transition-all duration-300"
+                              >
+                                <ExternalLink className="w-4 h-4 text-white" />
+                              </a>
+                            </div>
+                            <div className="absolute bottom-4 left-4">
+                              <span className="px-3 py-1 bg-jair-blue/80 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                                {project.category}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          {/* Conteúdo do Card */}
+                          <div className="p-6">
+                            {/* Header do Card */}
+                            <div className="flex items-center space-x-3 mb-4">
+                              <div className="w-12 h-12 bg-jair-blue/10 rounded-full flex items-center justify-center">
+                                <IconComponent className="w-6 h-6 text-blue-400" />
+                              </div>
+                              <div className="text-left">
+                                <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                              </div>
+                            </div>
 
-              <div className="bg-white/5 backdrop-blur-sm border border-jair-blue/20 rounded-xl p-6 hover:border-jair-blue/40 transition-all duration-300">
-                <div className="w-12 h-12 bg-jair-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Bot className="w-6 h-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Automações IA</h3>
-                <p className="text-gray-300 text-sm">Demonstrações de chatbots e automações inteligentes</p>
-              </div>
-            </div>
+                            {/* Descrição */}
+                            <p className="text-gray-300 mb-4 text-left">{project.description}</p>
 
-            {/* Demo Project Links */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl">
-                <a 
-                  href="https://flashback.jair.cloud/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center space-x-2 bg-gradient-primary text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold text-sm"
-                >
-                  <span>Flashback Fest</span>
-                </a>
-                <a 
-                  href="https://clinicadrsilva.jair.cloud/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center space-x-2 bg-gradient-primary text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold text-sm"
-                >
-                  <span>Dr. Silva</span>
-                </a>
-                <a 
-                  href="https://pulseirinhas.jair.cloud/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center space-x-2 bg-gradient-primary text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold text-sm"
-                >
-                  <span>Pulseirinhas</span>
-                </a>
+                            {/* Features */}
+                            <div className="flex flex-wrap gap-2 mb-6">
+                              {project.features.map((feature, index) => (
+                                <span
+                                  key={index}
+                                  className="px-3 py-1 bg-jair-blue/10 border border-jair-blue/20 rounded-full text-blue-400 text-sm"
+                                >
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* Botão de Visita */}
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 font-semibold w-full justify-center"
+                            >
+                              <span>Visitar Projeto</span>
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
             
