@@ -76,17 +76,7 @@ const Services: React.FC = () => {
                   ))}
                 </ul>
                 
-                <div className="text-center">
-                  <a
-                    href={`https://wa.me/5515988213309?text=${encodeURIComponent(service.whatsappText)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold"
-                  >
-                    <MessageCircle size={20} />
-                    <span>{service.cta}</span>
-                  </a>
-                </div>
+
               </div>
             ))}
           </div>

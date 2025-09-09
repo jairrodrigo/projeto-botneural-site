@@ -92,37 +92,7 @@ const Process: React.FC = () => {
               })}
             </div>
 
-            {/* CTA Section */}
-            <div className="mt-16 text-center">
-              <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Pronto para começar seu projeto?
-                </h3>
-                <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                  Agende uma consulta gratuita e descubra como podemos ajudar seu negócio a crescer com tecnologia.
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                  <a
-                    href="https://wa.me/5515988213309?text=Olá! Queremos agendar uma consulta gratuita para discutir nosso projeto."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold"
-                  >
-                    <MessageCircle size={24} />
-                    <span>Agendar Consulta Gratuita</span>
-                  </a>
-                  <a
-                    href="https://wa.me/5515988213309?text=Olá! Temos algumas dúvidas sobre o processo de desenvolvimento. Podem nos ajudar?"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-transparent border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-blue-400 hover:text-white font-semibold"
-                  >
-                    <MessageCircle size={24} />
-                    <span>Tirar Dúvidas</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
