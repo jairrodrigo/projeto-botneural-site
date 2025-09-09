@@ -290,7 +290,7 @@ const Testimonials: React.FC = () => {
               <div className="p-6">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900">Agende uma conversa gratuita</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Chame no Whatsapp</h3>
                   <button
                     onClick={() => setShowContactPopup(false)}
                     className="text-gray-400 hover:text-gray-600 transition-colors"

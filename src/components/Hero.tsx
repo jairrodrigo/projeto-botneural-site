@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
               className="inline-flex items-center space-x-3 bg-gradient-primary text-white px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 text-xl font-semibold"
             >
               <MessageCircle className="w-7 h-7" />
-              <span>Agende uma conversa gratuita</span>
+              <span>Chame no Whatsapp</span>
             </button>
           </div>
 
