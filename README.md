@@ -1,4 +1,4 @@
-# 🚀 Projeto Jair Cloud - Landing Page
+# 🚀 Projeto Botneural - Landing Page
 
 **Landing page profissional para especialista em automação de negócios com IA**
 
@@ -25,7 +25,7 @@ Site moderno e responsivo desenvolvido para apresentar serviços de automação 
 ## 📁 Estrutura do Projeto
 
 ```
-projeto-jair-cloud/
+projeto-botneural/
 ├── src/
 │   ├── components/
 │   │   ├── Hero.tsx           # Seção principal
@@ -47,8 +47,8 @@ projeto-jair-cloud/
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/jairrodrigo/projeto-jair-cloud.git
-   cd projeto-jair-cloud
+   git clone https://github.com/jairrodrigo/projeto-botneural.git
+   cd projeto-botneural
    ```
 
 2. **Instale as dependências:**
@@ -86,8 +86,8 @@ projeto-jair-cloud/
 ## 📞 Contato
 
 - **WhatsApp:** (15) 98821-3309
-- **Instagram:** @jair.cloud
-- **Email:** jairautomacoes@gmail.com
+- **Instagram:** @botneural
+- **Email:** contato@botneural.com.br
 - **Localização:** Sorocaba/SP
 
 ## 📄 Licença

@@ -10,7 +10,7 @@ const AIDemo: React.FC = () => {
       title: "Flashback Fest",
       description: "Site de evento musical com design moderno e responsivo",
       category: "Site Corporativo",
-      url: "https://flashback.jair.cloud/",
+      url: "https://flashback.botneural.com/",
       icon: MessageCircle,
       image: "/flashback_capa_demo.png",
       features: ["Design Responsivo", "Animações CSS", "SEO Otimizado"]
@@ -20,7 +20,7 @@ const AIDemo: React.FC = () => {
       title: "Dr. Silva",
       description: "Landing page para clínica médica com agendamento online",
       category: "Site Médico",
-      url: "https://clinicadrsilva.jair.cloud/",
+      url: "https://clinicadrsilva.botneural.com/",
       icon: Zap,
       image: "/clinicadrsilva_capa_demo.png",
       features: ["Agendamento Online", "Interface Limpa", "Mobile First"]
@@ -30,7 +30,7 @@ const AIDemo: React.FC = () => {
       title: "Pulseirinhas",
       description: "E-commerce de acessórios com carrinho de compras",
       category: "E-commerce",
-      url: "https://pulseirinhas.jair.cloud/",
+      url: "https://pulseirinhas.botneural.com/",
       icon: Bot,
       image: "/pulseirinhas_capa_demo.png",
       features: ["Carrinho de Compras", "Catálogo Dinâmico", "Checkout Integrado"]
@@ -191,7 +191,7 @@ const AIDemo: React.FC = () => {
             {/* CTA Button */}
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <a
-                href="https://wa.me/5515988213309?text=Olá! Quero saber mais sobre os serviços da Jair Cloud e solicitar um orçamento personalizado."
+                href="https://wa.me/5515988213309?text=Olá! Quero saber mais sobre os serviços da Botneural e solicitar um orçamento personalizado."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 bg-transparent border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-blue-400 hover:text-white font-semibold"

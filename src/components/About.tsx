@@ -11,7 +11,7 @@ const About: React.FC = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
                 Sobre{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                  Jair Cloud
+                  Botneural
                 </span>
               </h2>
               
@@ -26,10 +26,10 @@ const About: React.FC = () => {
                     />
                   </div>
                   <h4 className="text-2xl font-bold text-white mb-3">Jair Rodrigo</h4>
-                  <p className="text-blue-400 mb-6 text-lg">Especialista em Automação & IA</p>
+                  <p className="text-blue-400 mb-6 text-lg">Fundador da Botneural - Especialista em Automação & IA</p>
                   <div className="mt-6">
                     <p className="text-gray-300 mb-4 leading-relaxed text-base">
-                      Me chamo Jair Rodrigo e moro em Sorocaba. Ajudo empresas a otimizar processos e 
+                      Me chamo Jair Rodrigo, fundador da Botneural, e moro em Sorocaba. Ajudo empresas a otimizar processos e 
                       atendimento criando sites, sistemas e automação com IA.
                     </p>
                     <p className="text-gray-300 mb-4 leading-relaxed text-base">
@@ -86,7 +86,7 @@ const About: React.FC = () => {
                   <h4 className="text-xl font-bold text-white mb-2">E-mail</h4>
                   <p className="text-gray-300 mb-6">Para propostas e informações detalhadas</p>
                   <a
-                    href="mailto:jairautomacoes@gmail.com"
+                    href="mailto:contato@botneural.com.br"
                     className="inline-flex items-center justify-center space-x-2 bg-jair-blue hover:bg-jair-blue-dark text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ const About: React.FC = () => {
                   <h4 className="text-xl font-bold text-white mb-2">Instagram</h4>
                   <p className="text-gray-300 mb-6">Acompanhe projetos e novidades</p>
                   <a
-                    href="https://instagram.com/jair.cloud"
+                    href="https://www.instagram.com/botneural.ia/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
@@ -114,7 +114,7 @@ const About: React.FC = () => {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.52.204 5.02.43a5.105 5.105 0 00-1.852 1.207 5.105 5.105 0 00-1.207 1.852C1.734 4.02 1.612 4.594 1.578 5.541 1.544 6.49 1.53 6.896 1.53 10.518s.013 4.028.048 4.976c.034.947.156 1.521.382 2.021a5.105 5.105 0 001.207 1.852 5.105 5.105 0 001.852 1.207c.5.226 1.074.348 2.021.382.947.035 1.354.048 4.976.048s4.028-.013 4.976-.048c.947-.034 1.521-.156 2.021-.382a5.105 5.105 0 001.852-1.207 5.105 5.105 0 001.207-1.852c.226-.5.348-1.074.382-2.021.035-.947.048-1.354.048-4.976s-.013-4.028-.048-4.976c-.034-.947-.156-1.521-.382-2.021a5.105 5.105 0 00-1.207-1.852A5.105 5.105 0 0016.037.43C15.537.204 14.963.082 14.016.048 13.067.013 12.661 0 12.017 0zm0 2.17c3.304 0 3.648.012 4.93.07.3.055.602.166.822.275a2.678 2.678 0 011.02.66c.311.311.549.677.66 1.02.11.22.22.522.275.822.058 1.281.07 1.625.07 4.93s-.012 3.648-.07 4.93c-.055.3-.166.602-.275.822a2.678 2.678 0 01-.66 1.02c-.311.311-.677.549-1.02.66-.22.11-.522.22-.822.275-1.281.058-1.625.07-4.93.07s-3.648-.012-4.93-.07a2.678 2.678 0 01-.822-.275 2.678 2.678 0 01-1.02-.66 2.678 2.678 0 01-.66-1.02 2.678 2.678 0 01-.275-.822c-.058-1.281-.07-1.625-.07-4.93s.012-3.648.07-4.93c.055-.3.166-.602.275-.822.11-.343.349-.709.66-1.02.311-.311.677-.549 1.02-.66.22-.11.522-.22.822-.275 1.281-.058 1.625-.07 4.93-.07L12.017 2.17zm0 3.405a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.14a3.205 3.205 0 110-6.41 3.205 3.205 0 010 6.41zm5.338-8.34a1.154 1.154 0 11-2.308 0 1.154 1.154 0 012.308 0z"/>
                     </svg>
-                    <span>@jair.cloud</span>
+                    <span>@botneural</span>
                   </a>
                 </div>
               </div>

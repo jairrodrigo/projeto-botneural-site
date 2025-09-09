@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-          <span className="text-blue-400">Especialista em Desenvolvimento Web e Automação com IA.</span> Crio sites profissionais e automações inteligentes para WhatsApp que <span className="text-blue-400">trabalham 24h por você</span>.
+          <span className="text-blue-400">Botneural - Especialista em Desenvolvimento Web e Automação com IA.</span> Crio sites profissionais e automações inteligentes para WhatsApp que <span className="text-blue-400">trabalham 24h por você</span>.
         </p>
 
           {/* CTA Button */}

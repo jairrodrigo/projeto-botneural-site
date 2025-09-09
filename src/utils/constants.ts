@@ -2,8 +2,8 @@
 
 export const CONTACT_INFO = {
   whatsapp: "5515988213309",
-  email: "contato@jaircloud.com",
-  website: "https://jaircloud.com"
+  email: "contato@botneural.com.br",
+  website: "https://botneural.com"
 };
 
 export const COLORS = {
