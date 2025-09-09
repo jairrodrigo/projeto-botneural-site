@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="text-xl sm:text-2xl font-bold text-white relative z-10 flex-shrink-0 overflow-visible">
+          <div className="text-xl sm:text-2xl font-bold text-white relative z-10 flex-shrink-0 overflow-visible flex justify-center items-center">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
           </div>
 

@@ -8,14 +8,14 @@ const Process: React.FC = () => {
       title: "Consulta Gratuita",
       description: "Conversamos sobre suas necessidades e objetivos",
       icon: MessageCircle,
-      details: "Entendo seu negócio, público-alvo e metas. Identifico as melhores soluções para seu caso específico."
+      details: "Nossa equipe entende seu negócio, público-alvo e metas. Identificamos as melhores soluções para seu caso específico."
     },
     {
       step: "02",
       title: "Proposta Personalizada",
       description: "Criamos uma solução específica para seu negócio",
       icon: FileText,
-      details: "Desenvolvo um plano detalhado com cronograma, funcionalidades e investimento necessário."
+      details: "Desenvolvemos um plano detalhado com cronograma, funcionalidades e investimento necessário."
     },
     {
       step: "03",
@@ -99,11 +99,11 @@ const Process: React.FC = () => {
                   Pronto para começar seu projeto?
                 </h3>
                 <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                  Agende uma consulta gratuita e descubra como posso ajudar seu negócio a crescer com tecnologia.
+                  Agende uma consulta gratuita e descubra como podemos ajudar seu negócio a crescer com tecnologia.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                   <a
-                    href="https://wa.me/5515988213309?text=Olá! Quero agendar uma consulta gratuita para discutir meu projeto."
+                    href="https://wa.me/5515988213309?text=Olá! Queremos agendar uma consulta gratuita para discutir nosso projeto."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 font-semibold"
@@ -112,7 +112,7 @@ const Process: React.FC = () => {
                     <span>Agendar Consulta Gratuita</span>
                   </a>
                   <a
-                    href="https://wa.me/5515988213309?text=Olá! Tenho algumas dúvidas sobre o processo de desenvolvimento. Pode me ajudar?"
+                    href="https://wa.me/5515988213309?text=Olá! Temos algumas dúvidas sobre o processo de desenvolvimento. Podem nos ajudar?"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-2 bg-transparent border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-blue-400 hover:text-white font-semibold"

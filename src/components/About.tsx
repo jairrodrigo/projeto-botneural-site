@@ -29,12 +29,12 @@ const About: React.FC = () => {
                   <p className="text-blue-400 mb-6 text-lg">Fundador da Botneural - Especialista em Automação & IA</p>
                   <div className="mt-6">
                     <p className="text-gray-300 mb-4 leading-relaxed text-base">
-                      Me chamo Jair Rodrigo, fundador da Botneural, e moro em Sorocaba. Ajudo empresas a otimizar processos e 
-                      atendimento criando sites, sistemas e automação com IA.
+                      Jair Rodrigo é o fundador da Botneural, empresa sediada em Sorocaba especializada em otimização de processos e 
+                      atendimento através de sites, sistemas e automação com IA.
                     </p>
                     <p className="text-gray-300 mb-4 leading-relaxed text-base">
-                      Cada projeto que desenvolvo recebe minha atenção completa. Não sou apenas mais um 
-                      desenvolvedor - sou seu parceiro dedicado na transformação digital do seu negócio.
+                      A Botneural oferece atenção completa a cada projeto desenvolvido. Mais do que um fornecedor de tecnologia, 
+                      somos parceiros dedicados na transformação digital dos negócios de nossos clientes.
                     </p>
                     <p className="text-gray-300 text-base italic">
                       "Otimizo processos e atendimento através de tecnologia inteligente"

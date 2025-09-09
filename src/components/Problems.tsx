@@ -47,7 +47,7 @@ const Problems: React.FC = () => {
             </div>
 
             <div className="space-y-4 md:space-y-6 mt-8 lg:mt-0">
-              <h3 className="text-xl md:text-2xl font-bold text-green-400 mb-6 md:mb-8 text-center">✅ Com Minhas Soluções</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-green-400 mb-6 md:mb-8 text-center">✅ Com Nossas Soluções</h3>
               {solutions.map((solution, index) => (
                 <div key={index} className="flex items-start space-x-3 md:space-x-4 p-3 md:p-4 bg-green-900/20 rounded-lg border border-green-500/20">
                   <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-green-400 mt-1 flex-shrink-0" />
@@ -59,13 +59,13 @@ const Problems: React.FC = () => {
 
           <div className="text-center mt-12 md:mt-16 px-4">
             <a
-              href="https://wa.me/5515988213309?text=Olá! Quero parar de perder dinheiro e automatizar meu negócio. Vamos conversar?"
+              href="https://wa.me/5515988213309?text=Olá! Queremos parar de perder dinheiro e automatizar nosso negócio. Vamos conversar?"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center space-x-2 bg-gradient-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 w-full max-w-sm md:max-w-none md:w-auto"
             >
               <MessageCircle size={20} className="md:w-6 md:h-6" />
-              <span className="text-base md:text-lg font-semibold text-center">Quero Automatizar Meu Negócio AGORA</span>
+              <span className="text-base md:text-lg font-semibold text-center">Quero Automatizar Nosso Negócio AGORA</span>
             </a>
           </div>
           </div>

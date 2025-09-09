@@ -71,7 +71,7 @@ const Testimonials: React.FC = () => {
 
   const handleSubmitReview = () => {
     if (userRating && reviewText && userName) {
-      const message = `Olá! Quero deixar minha avaliação:\n\n⭐ Avaliação: ${userRating}/5 estrelas\n👤 Nome: ${userName}\n🏢 Empresa: ${userBusiness || 'Não informado'}\n💬 Comentário: ${reviewText}`;
+      const message = `Olá! Queremos deixar nossa avaliação:\n\n⭐ Avaliação: ${userRating}/5 estrelas\n👤 Nome: ${userName}\n🏢 Empresa: ${userBusiness || 'Não informado'}\n💬 Comentário: ${reviewText}`;
       const whatsappUrl = `https://wa.me/5515988213309?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
       
@@ -205,7 +205,7 @@ const Testimonials: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <a
-                href="https://wa.me/5515988213309?text=Olá! Vi os casos de sucesso e quero agendar uma consulta gratuita para meu negócio."
+                href="https://wa.me/5515988213309?text=Olá! Vimos os casos de sucesso e queremos agendar uma consulta gratuita para nosso negócio."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-3 bg-gradient-primary text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 font-semibold text-lg"
@@ -215,7 +215,7 @@ const Testimonials: React.FC = () => {
               </a>
               
               <a
-                href="https://wa.me/5515988213309?text=Olá! Quero saber mais sobre como vocês podem ajudar meu negócio."
+                href="https://wa.me/5515988213309?text=Olá! Queremos saber mais sobre como vocês podem ajudar nosso negócio."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-3 bg-transparent border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-blue-400 hover:text-white font-semibold text-lg"
