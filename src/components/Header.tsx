@@ -93,7 +93,7 @@ const Header: React.FC = () => {
             className="hidden lg:flex items-center space-x-2 bg-gradient-primary text-white px-4 py-2 lg:px-6 lg:py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 relative z-10 text-sm lg:text-base flex-shrink-0"
           >
             <MessageCircle size={18} className="lg:w-5 lg:h-5" />
-            <span className="whitespace-nowrap">Chame no Whatsapp</span>
+            <span className="whitespace-nowrap">Agende uma conversa gratuita</span>
           </button>
 
           {/* Mobile Menu Button */}
@@ -147,7 +147,7 @@ const Header: React.FC = () => {
                     className="flex items-center justify-center space-x-2 bg-gradient-primary text-white px-6 py-3 rounded-full transition-all duration-300 shadow-lg shadow-jair-blue/25 w-full"
                   >
                     <MessageCircle size={20} />
-                    <span>Chame no Whatsapp</span>
+                    <span>Agende uma conversa gratuita</span>
                   </button>
                 </div>
               </nav>

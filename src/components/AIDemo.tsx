@@ -215,7 +215,7 @@ const AIDemo: React.FC = () => {
                 className="inline-flex items-center space-x-2 bg-transparent border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-blue-400 hover:text-white font-semibold"
               >
                 <MessageCircle size={24} />
-                <span className="text-lg">Chame no Whatsapp</span>
+                <span className="text-lg">Agende uma conversa gratuita</span>
               </button>
             </div>
           </div>
