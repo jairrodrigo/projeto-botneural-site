@@ -229,7 +229,12 @@ const AIDemo: React.FC = () => {
             <div className="p-8">
               {/* Header */}
                <div className="flex justify-between items-center mb-6">
-                 <h3 className="text-2xl font-bold">
+                 <h3 className="text-2xl font-bold flex items-center space-x-1">
+                    <img 
+                      src="/botneural_logo.png" 
+                      alt="Botneural Logo" 
+                      className="w-8 h-8"
+                    />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
                   </h3>
                  <button

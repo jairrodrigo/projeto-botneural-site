@@ -49,7 +49,12 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="text-xl sm:text-2xl font-bold text-white relative z-10 flex-shrink-0 overflow-visible flex justify-center items-center">
+          <div className="text-xl sm:text-2xl font-bold text-white relative z-10 flex-shrink-0 overflow-visible flex justify-center items-center space-x-1">
+            <img 
+              src="/botneural_logo.png" 
+              alt="Botneural Logo" 
+              className="w-10 h-10 sm:w-12 sm:h-12"
+            />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
           </div>
 
@@ -87,14 +92,7 @@ const Header: React.FC = () => {
             </button>
           </nav>
 
-          {/* CTA Button */}
-          <button
-            onClick={() => setShowContactPopup(true)}
-            className="hidden lg:flex items-center space-x-2 bg-gradient-primary text-white px-4 py-2 lg:px-6 lg:py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 relative z-10 text-sm lg:text-base flex-shrink-0"
-          >
-            <MessageCircle size={18} className="lg:w-5 lg:h-5" />
-            <span className="whitespace-nowrap">Agende uma conversa gratuita</span>
-          </button>
+
 
           {/* Mobile Menu Button */}
           <button
@@ -163,7 +161,12 @@ const Header: React.FC = () => {
             <div className="p-8">
               {/* Header */}
                <div className="flex justify-between items-center mb-6">
-                 <h3 className="text-2xl font-bold">
+                 <h3 className="text-2xl font-bold flex items-center space-x-1">
+                    <img 
+                      src="/botneural_logo.png" 
+                      alt="Botneural Logo" 
+                      className="w-8 h-8"
+                    />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
                   </h3>
                  <button
