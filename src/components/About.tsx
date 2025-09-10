@@ -28,16 +28,8 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 flex items-center justify-center space-x-1">
-                <span>Sobre</span>
-                <img 
-                  src="/botneural_logo.png" 
-                  alt="Botneural Logo" 
-                  className="w-10 h-10 sm:w-12 sm:h-12"
-                />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                  Botneural
-                </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+                Sobre <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Botneural</span>
               </h2>
               
               {/* Profile Card */}
