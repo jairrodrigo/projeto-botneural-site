@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { MessageCircle, Calendar, X } from 'lucide-react';
+import { saveContactForm } from '../lib/supabase';
+import { SuccessPopup } from './SuccessPopup';
 
 const Hero: React.FC = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -14,13 +17,26 @@ const Hero: React.FC = () => {
     setContactForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleContactSubmit = () => {
-    // Reset form and close popup
-    setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
-    setShowContactPopup(false);
-    
-    // Show success message or handle form submission as needed
-    alert('Obrigado! Entraremos em contato em breve.');
+  const handleContactSubmit = async () => {
+    try {
+      // Salvar no Supabase
+      await saveContactForm({
+        name: contactForm.name,
+        email: contactForm.email,
+        whatsapp: contactForm.whatsapp,
+        segment: contactForm.segment
+      });
+      
+      // Reset form and close popup
+      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      setShowContactPopup(false);
+      
+      // Mostrar popup de sucesso
+      setShowSuccessPopup(true);
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+      alert('Erro ao salvar dados. Tente novamente.');
+    }
   };
 
   return (
@@ -151,6 +167,13 @@ const Hero: React.FC = () => {
           </div>
         </div>
       )}
+      
+      {/* Popup de sucesso */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+      />
     </section>
   );
 };

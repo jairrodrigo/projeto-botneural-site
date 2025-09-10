@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, MessageCircle, Calendar } from 'lucide-react';
+import { saveContactForm } from '../lib/supabase';
+import { SuccessPopup } from './SuccessPopup';
 
 const Problems: React.FC = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -14,13 +17,20 @@ const Problems: React.FC = () => {
     setContactForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleContactSubmit = () => {
-    // Reset form and close popup
-    setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
-    setShowContactPopup(false);
-    
-    // Show success message or handle form submission as needed
-    alert('Obrigado! Entraremos em contato em breve.');
+  const handleContactSubmit = async () => {
+    try {
+      await saveContactForm(contactForm);
+      
+      // Reset form and close popup
+      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      setShowContactPopup(false);
+      
+      // Mostrar popup de sucesso
+      setShowSuccessPopup(true);
+    } catch (error) {
+      console.error('Erro ao salvar contato:', error);
+      alert('Erro ao enviar formulário. Tente novamente.');
+    }
   };
   const problems = [
     "Perder clientes por demora de atendimento e fora de horário de expediente", 
@@ -178,6 +188,13 @@ const Problems: React.FC = () => {
           </div>
         </div>
       )}
+      
+      {/* Popup de sucesso */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+      />
     </section>
   );
 };

@@ -1,0 +1,247 @@
+{
+  "name": "BotNeural - Lead Automation with Evolution API",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "botneural_formulario",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "botneural_formulario"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar dados do formulário\nconst { name, email, whatsapp, segment, created_at, prospectado } = $json;\n\n// Verificar se lead já foi prospectado\nif (prospectado === true) {\n  console.log(`⚠️ Lead ${name} já foi prospectado anteriormente. Pulando envio.`);\n  return [];\n}\n\n// Limpar número do WhatsApp (remover caracteres especiais)\nconst cleanPhone = whatsapp.replace(/\\D/g, '');\n\n// Mensagens personalizadas por segmento\nconst messages = {\n  'e-commerce': `🛒 *Olá ${name}!*\n\nVi que você tem interesse em *automação para e-commerce*.\n\nQue tal agendar uma conversa de 15min para mostrar como podemos *aumentar suas vendas em 300%*?\n\n🚀 Clique aqui para agendar: https://calendly.com/botneural\n\n_Mensagem automática da BotNeural_`,\n  \n  'saude': `🏥 *Oi ${name}!*\n\nNotei seu interesse em *soluções para área da saúde*.\n\nTemos cases incríveis de clínicas que *automatizaram 80% do atendimento*.\n\n👨‍⚕️ Quer ver como funciona?\n\n📅 Agende uma demo: https://calendly.com/botneural\n\n_Mensagem automática da BotNeural_`,\n  \n  'educacao': `📚 *Olá ${name}!*\n\n*Educação é nossa paixão!*\n\nTemos soluções que podem automatizar:\n• Matrículas\n• Suporte aos alunos\n• Comunicação com pais\n• E muito mais!\n\n🎓 Vamos conversar?\n\n📞 Agende aqui: https://calendly.com/botneural\n\n_Mensagem automática da BotNeural_`,\n  \n  'servicos': `💼 *Oi ${name}!*\n\nVi seu interesse em *automação para prestação de serviços*.\n\nPodemos ajudar você a:\n• Automatizar agendamentos\n• Qualificar leads\n• Reduzir tempo de resposta\n\n⚡ Resultado: *Mais tempo para focar no que importa!*\n\n📅 Vamos conversar: https://calendly.com/botneural\n\n_Mensagem automática da BotNeural_`,\n  \n  'default': `🤖 *Oi ${name}!*\n\n*Obrigado pelo interesse na BotNeural!*\n\nEm breve nossa equipe entrará em contato para apresentar as *melhores soluções de automação* para seu negócio.\n\n🚀 Enquanto isso, que tal agendar uma conversa?\n\n📞 Clique aqui: https://calendly.com/botneural\n\n_Mensagem automática da BotNeural_`\n};\n\n// Selecionar mensagem baseada no segmento\nconst message = messages[segment] || messages.default;\n\n// Retornar dados processados\nreturn [{\n  json: {\n    phone: cleanPhone,\n    message: message,\n    name: name,\n    email: email,\n    segment: segment,\n    original_phone: whatsapp,\n    timestamp: created_at || new Date().toISOString()\n  }\n}];"
+      },
+      "id": "process-data",
+      "name": "Process Lead Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://sua-evolution-api.com/message/sendText/INSTANCE_NAME",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpMethod": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "SUA_API_KEY_EVOLUTION"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "{\n  \"number\": \"={{$json.phone}}\",\n  \"text\": \"={{$json.message}}\"\n}",
+        "options": {}
+      },
+      "id": "evolution-api",
+      "name": "Send WhatsApp Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "success-condition",
+              "leftValue": "={{ $json.statusCode }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-response",
+      "name": "Check API Response",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log de sucesso\nconst { name, phone, segment, email } = $json;\n\nconsole.log(`✅ Mensagem enviada com sucesso para ${name} (${phone}) - Segmento: ${segment}`);\n\n// Retornar dados para marcar como prospectado\nreturn [{\n  json: {\n    status: 'success',\n    lead_name: name,\n    lead_phone: phone,\n    lead_email: email,\n    lead_segment: segment,\n    message_sent_at: new Date().toISOString(),\n    update_prospectado: true\n  }\n}];"
+      },
+      "id": "success-log",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log de erro\nconst { name, phone } = $json;\nconst error = $json.error || 'Erro desconhecido';\n\nconsole.error(`❌ Falha ao enviar mensagem para ${name} (${phone}): ${error}`);\n\n// Retornar dados para reprocessamento\nreturn [{\n  json: {\n    status: 'error',\n    lead_name: name,\n    lead_phone: phone,\n    error_message: error,\n    failed_at: new Date().toISOString(),\n    retry_needed: true\n  }\n}];"
+      },
+      "id": "error-log",
+      "name": "Log Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://gwsfxihujlmujpzswolj.supabase.co/rest/v1/contact_forms",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpMethod": "PATCH",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3c2Z4aWh1amxtdWpwenN3b2xqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MzIyODAsImV4cCI6MjA3MzEwODI4MH0.1mYwLFgUV_it3JduQXEV7ojBkXygUTI2EFckILIILDg"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3c2Z4aWh1amxtdWpwenN3b2xqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MzIyODAsImV4cCI6MjA3MzEwODI4MH0.1mYwLFgUV_it3JduQXEV7ojBkXygUTI2EFckILIILDg"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "eq.={{$json.lead_email}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "{\n  \"prospectado\": true,\n  \"updated_at\": \"={{new Date().toISOString()}}\"\n}",
+        "options": {}
+      },
+      "id": "mark-prospectado",
+      "name": "Mark as Prospectado",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 200]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Process Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send WhatsApp Message": {
+      "main": [
+        [
+          {
+            "node": "Check API Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check API Response": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Success": {
+      "main": [
+        [
+          {
+            "node": "Mark as Prospectado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-27T00:00:00.000Z",
+  "id": "botneural-lead-automation",
+  "meta": {
+    "instanceId": "botneural-automation"
+  },
+  "name": "BotNeural - Lead Automation with Evolution API",
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-27T00:00:00.000Z",
+      "id": "botneural",
+      "name": "BotNeural",
+      "updatedAt": "2025-01-27T00:00:00.000Z"
+    },
+    {
+      "createdAt": "2025-01-27T00:00:00.000Z",
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "updatedAt": "2025-01-27T00:00:00.000Z"
+    },
+    {
+      "createdAt": "2025-01-27T00:00:00.000Z",
+      "id": "evolution-api",
+      "name": "Evolution API",
+      "updatedAt": "2025-01-27T00:00:00.000Z"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T00:00:00.000Z",
+  "versionId": "1"
+}

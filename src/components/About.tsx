@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { User, Target, Heart, Zap, Calendar, X } from 'lucide-react';
+import { saveContactForm } from '../lib/supabase';
+import { SuccessPopup } from './SuccessPopup';
 
 const About: React.FC = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -14,13 +17,26 @@ const About: React.FC = () => {
     setContactForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleContactSubmit = () => {
-    // Reset form and close popup
-    setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
-    setShowContactPopup(false);
-    
-    // Show success message or handle form submission as needed
-    alert('Obrigado! Entraremos em contato em breve.');
+  const handleContactSubmit = async () => {
+    try {
+      // Salvar no Supabase
+      await saveContactForm({
+        name: contactForm.name,
+        email: contactForm.email,
+        whatsapp: contactForm.whatsapp,
+        segment: contactForm.segment
+      });
+      
+      // Reset form and close popup
+      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      setShowContactPopup(false);
+      
+      // Mostrar popup de sucesso
+      setShowSuccessPopup(true);
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+      alert('Erro ao salvar dados. Tente novamente.');
+    }
   };
   return (
     <section id="about" className="py-20 px-4">
@@ -29,7 +45,10 @@ const About: React.FC = () => {
             {/* Header */}
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-                Sobre <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Botneural</span>
+                <span>Sobre </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                  Botneural
+                </span>
               </h2>
               
               {/* Profile Card */}
@@ -231,6 +250,13 @@ const About: React.FC = () => {
             </div>
           </div>
         )}
+      
+      {/* Popup de sucesso */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+      />
       </section>
     );
   };

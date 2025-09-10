@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Star, Quote, MessageCircle, Send, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { saveContactForm } from '../lib/supabase';
+import { SuccessPopup } from './SuccessPopup';
 
 interface Testimonial {
   name: string;
@@ -46,6 +48,7 @@ const Testimonials: React.FC = () => {
   const [userBusiness, setUserBusiness] = useState('');
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -106,13 +109,20 @@ const Testimonials: React.FC = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const handleContactSubmit = () => {
-    // Reset form and close popup
-    setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
-    setShowContactPopup(false);
-    
-    // Show success message or handle form submission as needed
-    alert('Obrigado! Entraremos em contato em breve.');
+  const handleContactSubmit = async () => {
+    try {
+      await saveContactForm(contactForm);
+      
+      // Reset form and close popup
+      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      setShowContactPopup(false);
+      
+      // Mostrar popup de sucesso
+      setShowSuccessPopup(true);
+    } catch (error) {
+      console.error('Erro ao salvar contato:', error);
+      alert('Erro ao enviar formulário. Tente novamente.');
+    }
   };
 
   return (
@@ -366,6 +376,13 @@ const Testimonials: React.FC = () => {
             </div>
           </div>
         )}
+        
+        {/* Popup de sucesso */}
+        <SuccessPopup 
+          isOpen={showSuccessPopup}
+          onClose={() => setShowSuccessPopup(false)}
+          message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+        />
       </section>
     );
 };

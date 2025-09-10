@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle, Calendar } from 'lucide-react';
+import { saveContactForm } from '../lib/supabase';
+import { SuccessPopup } from './SuccessPopup';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -16,12 +19,31 @@ const Header: React.FC = () => {
     setContactForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleContactSubmit = () => {
-    const message = `Olá! Meu nome é ${contactForm.name}. Email: ${contactForm.email}. WhatsApp: ${contactForm.whatsapp}. Segmento: ${contactForm.segment}. Gostaria de agendar uma conversa gratuita!`;
-    const whatsappUrl = `https://wa.me/5515988213309?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-    setShowContactPopup(false);
-    setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+  const handleContactSubmit = async () => {
+    try {
+      // Salvar no Supabase
+      await saveContactForm({
+        name: contactForm.name,
+        email: contactForm.email,
+        whatsapp: contactForm.whatsapp,
+        segment: contactForm.segment
+      });
+      
+      // Enviar para WhatsApp
+      const message = `Olá! Meu nome é ${contactForm.name}. Email: ${contactForm.email}. WhatsApp: ${contactForm.whatsapp}. Segmento: ${contactForm.segment}. Gostaria de agendar uma conversa gratuita!`;
+      const whatsappUrl = `https://wa.me/5515988213309?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      // Limpar formulário e fechar popup
+      setShowContactPopup(false);
+      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      
+      // Mostrar popup de sucesso
+      setShowSuccessPopup(true);
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+      alert('Erro ao salvar dados. Tente novamente.');
+    }
   };
 
   useEffect(() => {
@@ -247,6 +269,13 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
+      
+      {/* Popup de sucesso */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+      />
     </header>
   );
 };
