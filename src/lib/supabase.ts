@@ -20,7 +20,7 @@ export interface ContactForm {
 
 // Função para salvar dados do formulário
 export const saveContactForm = async (formData: ContactForm) => {
-  const webhookUrl = 'https://webhook.botneural.online/webhook/formulario-botneural';
+  const webhookUrl = 'https://n8n.botneural.online/webhook/formulario-botneural';
   
   console.log('🔗 Webhook URL:', webhookUrl);
   console.log('📝 Dados a serem enviados:', formData);
