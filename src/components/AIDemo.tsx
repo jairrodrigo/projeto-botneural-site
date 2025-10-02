@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Zap, Bot, ChevronLeft, ChevronRight, ExternalLink, Calendar, X } from 'lucide-react';
+import { MessageCircle, Zap, Bot, ChevronLeft, ChevronRight, ExternalLink, Calendar, X, User, Phone, Building } from 'lucide-react';
 import { saveContactForm } from '../lib/supabase';
 import { SuccessPopup } from './SuccessPopup';
 
@@ -270,8 +270,9 @@ const AIDemo: React.FC = () => {
                     onChange={(e) => handleContactFormChange('name', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
-                  <div className="mt-2 text-xs text-gray-400">
-                    ℹ️ Como você gostaria de ser chamado?
+                  <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
+                    <User size={14} className="text-blue-400" />
+                    Como você gostaria de ser chamado?
                   </div>
                 </div>
 
@@ -284,8 +285,9 @@ const AIDemo: React.FC = () => {
                     onChange={(e) => handleContactFormChange('whatsapp', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
-                  <div className="mt-2 text-xs text-gray-400">
-                    📱 Número com DDD para contato direto
+                  <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
+                    <Phone size={14} className="text-blue-400" />
+                    Número com DDD para contato direto
                   </div>
                 </div>
 
@@ -298,8 +300,9 @@ const AIDemo: React.FC = () => {
                     onChange={(e) => handleContactFormChange('segment', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
-                  <div className="mt-2 text-xs text-gray-400">
-                    🏢 Ex: E-commerce, Consultoria, Clínica, etc.
+                  <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
+                    <Building size={14} className="text-blue-400" />
+                    Ex: E-commerce, Consultoria, Clínica, etc.
                   </div>
                 </div>
               </div>
