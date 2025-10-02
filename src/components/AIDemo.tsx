@@ -9,7 +9,6 @@ const AIDemo: React.FC = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
-    email: '',
     whatsapp: '',
     segment: ''
   });
@@ -23,13 +22,12 @@ const AIDemo: React.FC = () => {
       // Salvar no Supabase
       await saveContactForm({
         name: contactForm.name,
-        email: contactForm.email,
         whatsapp: contactForm.whatsapp,
         segment: contactForm.segment
       });
       
       // Reset form and close popup
-      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      setContactForm({ name: '', whatsapp: '', segment: '' });
       setShowContactPopup(false);
       
       // Mostrar popup de sucesso
@@ -272,17 +270,9 @@ const AIDemo: React.FC = () => {
                     onChange={(e) => handleContactFormChange('name', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                  <input
-                    type="email"
-                    placeholder="Seu melhor email"
-                    value={contactForm.email}
-                    onChange={(e) => handleContactFormChange('email', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                  />
+                  <div className="mt-2 text-xs text-gray-400">
+                    ℹ️ Como você gostaria de ser chamado?
+                  </div>
                 </div>
 
                 <div>
@@ -294,6 +284,9 @@ const AIDemo: React.FC = () => {
                     onChange={(e) => handleContactFormChange('whatsapp', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
+                  <div className="mt-2 text-xs text-gray-400">
+                    📱 Número com DDD para contato direto
+                  </div>
                 </div>
 
                 <div>
@@ -305,6 +298,9 @@ const AIDemo: React.FC = () => {
                     onChange={(e) => handleContactFormChange('segment', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
+                  <div className="mt-2 text-xs text-gray-400">
+                    🏢 Ex: E-commerce, Consultoria, Clínica, etc.
+                  </div>
                 </div>
               </div>
 
@@ -318,7 +314,7 @@ const AIDemo: React.FC = () => {
                  </button>
                  <button
                    onClick={handleContactSubmit}
-                   disabled={!contactForm.name || !contactForm.email || !contactForm.whatsapp || !contactForm.segment}
+                   disabled={!contactForm.name || !contactForm.whatsapp || !contactForm.segment}
                    className="flex-1 px-6 py-3 bg-gradient-primary text-white rounded-lg hover:opacity-90 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-jair-blue/25"
                  >
                    Enviar

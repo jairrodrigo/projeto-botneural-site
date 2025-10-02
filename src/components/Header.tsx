@@ -10,7 +10,6 @@ const Header: React.FC = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
-    email: '',
     whatsapp: '',
     segment: ''
   });
@@ -24,19 +23,18 @@ const Header: React.FC = () => {
       // Salvar no Supabase
       await saveContactForm({
         name: contactForm.name,
-        email: contactForm.email,
         whatsapp: contactForm.whatsapp,
         segment: contactForm.segment
       });
       
       // Enviar para WhatsApp
-      const message = `Olá! Meu nome é ${contactForm.name}. Email: ${contactForm.email}. WhatsApp: ${contactForm.whatsapp}. Segmento: ${contactForm.segment}. Gostaria de agendar uma conversa gratuita!`;
+      const message = `Olá! Meu nome é ${contactForm.name}. WhatsApp: ${contactForm.whatsapp}. Segmento: ${contactForm.segment}. Gostaria de agendar uma conversa gratuita!`;
       const whatsappUrl = `https://wa.me/5515988213309?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
       
       // Limpar formulário e fechar popup
       setShowContactPopup(false);
-      setContactForm({ name: '', email: '', whatsapp: '', segment: '' });
+      setContactForm({ name: '', whatsapp: '', segment: '' });
       
       // Mostrar popup de sucesso
       setShowSuccessPopup(true);
@@ -210,17 +208,9 @@ const Header: React.FC = () => {
                     onChange={(e) => handleContactFormChange('name', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                  <input
-                    type="email"
-                    placeholder="Seu melhor email"
-                    value={contactForm.email}
-                    onChange={(e) => handleContactFormChange('email', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                  />
+                  <div className="mt-2 text-xs text-gray-400">
+                    ℹ️ Como você gostaria de ser chamado?
+                  </div>
                 </div>
 
                 <div>
@@ -232,6 +222,9 @@ const Header: React.FC = () => {
                     onChange={(e) => handleContactFormChange('whatsapp', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
+                  <div className="mt-2 text-xs text-gray-400">
+                    📱 Número com DDD para contato direto
+                  </div>
                 </div>
 
                 <div>
@@ -243,6 +236,9 @@ const Header: React.FC = () => {
                     onChange={(e) => handleContactFormChange('segment', e.target.value)}
                     className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
                   />
+                  <div className="mt-2 text-xs text-gray-400">
+                    🏢 Ex: E-commerce, Consultoria, Clínica, etc.
+                  </div>
                 </div>
               </div>
 
@@ -256,7 +252,7 @@ const Header: React.FC = () => {
                  </button>
                  <button
                    onClick={handleContactSubmit}
-                   disabled={!contactForm.name || !contactForm.email || !contactForm.whatsapp || !contactForm.segment}
+                   disabled={!contactForm.name || !contactForm.whatsapp || !contactForm.segment}
                    className="flex-1 px-6 py-3 bg-gradient-primary text-white rounded-lg hover:opacity-90 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-jair-blue/25"
                  >
                    Enviar
