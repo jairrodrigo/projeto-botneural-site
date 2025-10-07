@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Zap, Bot, ChevronLeft, ChevronRight, ExternalLink, Calendar, X, User, Phone, Building } from 'lucide-react';
+import { MessageCircle, ChevronLeft, ChevronRight, ExternalLink, X, User, Phone, Building } from 'lucide-react';
 import { saveContactForm } from '../lib/supabase';
 import { SuccessPopup } from './SuccessPopup';
 
@@ -59,26 +59,7 @@ const AIDemo: React.FC = () => {
       image: "/soropel_capa.png",
       features: ["Catálogo de Produtos", "Carrinho e Checkout", "Design Responsivo"]
     },
-    {
-      id: 2,
-      title: "Dr. Silva",
-      description: "Landing page para clínica médica com agendamento online",
-      category: "Site Médico",
-      url: "https://clinicadrsilva.botneural.com/",
-      icon: Zap,
-      image: "/clinicadrsilva_capa_demo.png",
-      features: ["Agendamento Online", "Interface Limpa", "Mobile First"]
-    },
-    {
-      id: 3,
-      title: "Pulseirinhas",
-      description: "E-commerce de acessórios com carrinho de compras",
-      category: "E-commerce",
-      url: "https://pulseirinhas.botneural.com/",
-      icon: Bot,
-      image: "/pulseirinhas_capa_demo.png",
-      features: ["Carrinho de Compras", "Catálogo Dinâmico", "Checkout Integrado"]
-    }
+    
   ];
 
   const nextSlide = () => {
