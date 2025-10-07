@@ -40,14 +40,24 @@ const AIDemo: React.FC = () => {
 
   const projects = [
     {
+      id: 0,
+      title: "JC Soluções",
+      description: "Instalações e montagens comerciais com qualidade e eficiência",
+      category: "Instalações Comerciais",
+      url: "https://jc-solucoes-visual-boost.vercel.app/",
+      icon: Building,
+      image: "/JC soluções.png",
+      features: ["Comunicação Visual", "Infraestrutura Elétrica", "Montagens Comerciais"]
+    },
+    {
       id: 1,
-      title: "Flashback Fest",
-      description: "Site de evento musical com design moderno e responsivo",
-      category: "Site Corporativo",
-      url: "https://flashback.botneural.com/",
+      title: "Soropel",
+      description: "Loja online Soropel com design responsivo",
+      category: "E-commerce",
+      url: "https://www.soropel.com.br/",
       icon: MessageCircle,
-      image: "/flashback_capa_demo.png",
-      features: ["Design Responsivo", "Animações CSS", "SEO Otimizado"]
+      image: "/soropel_capa.png",
+      features: ["Catálogo de Produtos", "Carrinho e Checkout", "Design Responsivo"]
     },
     {
       id: 2,
@@ -84,21 +94,15 @@ const AIDemo: React.FC = () => {
       <div className="container mx-auto">
         <div className="bg-gradient-demo rounded-2xl p-8 md:p-12">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-flex items-center space-x-2 bg-jair-blue/10 border border-jair-blue/20 rounded-full px-4 py-2 mb-8">
-              <Bot className="w-4 h-4 text-blue-400" />
-              <span className="text-blue-400 text-sm">Projetos Demonstrativos</span>
-            </div>
-
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Nossos{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                Projetos Demo
+                Projetos
               </span>
             </h2>
 
             <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-              Explore nossos projetos demonstrativos criados para showcases técnicos. Por questões de{' '}
-              <span className="text-blue-400">confidencialidade e respeito aos nossos clientes</span>, apresentamos apenas projetos de demonstração que ilustram nossas capacidades.
+              Confira alguns projetos reais que desenvolvemos para diferentes segmentos.
             </p>
 
             {/* Carrossel de Projetos */}
