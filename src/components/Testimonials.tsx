@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Quote, MessageCircle, Send, X, ChevronLeft, ChevronRight, User, Phone, Building } from 'lucide-react';
+import { Star, Send, X, ChevronLeft, ChevronRight, User, Phone, Building } from 'lucide-react';
 import { saveContactForm } from '../lib/supabase';
 import { SuccessPopup } from './SuccessPopup';
 
@@ -16,25 +16,25 @@ const testimonials: Testimonial[] = [
   {
     name: "Dr. Carlos Silva",
     business: "Clínica Silva",
-    businessType: "Saúde",
+    businessType: "Saúde & Clínica",
     result: "50% menos agendamentos manuais",
-    quote: "Automação transformou nosso atendimento. Pacientes agendam pelo WhatsApp 24h.",
+    quote: "A automação transformou nosso atendimento. Os pacientes agora agendam sozinhos pelo WhatsApp 24h por dia, sem precisar ligar.",
     rating: 5
   },
   {
     name: "Maria Santos",
     business: "Boutique Elegance",
-    businessType: "Moda",
-    result: "3x mais vendas online",
-    quote: "Site profissional mudou tudo. Recebo pedidos 24h e pagamento é prático.",
+    businessType: "Varejo & Moda",
+    result: "3x mais vendas online em 30 dias",
+    quote: "Antes eu perdia muitas vendas por demorar para responder. Agora a IA atende todas as clientes na hora e já manda o link de pagamento.",
     rating: 5
   },
   {
     name: "João Oliveira",
     business: "Advocacia Oliveira",
-    businessType: "Jurídico",
-    result: "80% atendimento automatizado",
-    quote: "Chatbot responde dúvidas e agenda consultas. Mais tempo para casos importantes.",
+    businessType: "Serviços Jurídicos",
+    result: "Zero tempo perdido com triagem",
+    quote: "O robô faz toda a qualificação inicial. Só chegam para mim os clientes que realmente têm potencial e agendam a consulta.",
     rating: 5
   }
 ];
@@ -70,9 +70,8 @@ const Testimonials: React.FC = () => {
       <Star
         key={index}
         size={24}
-        className={`cursor-pointer transition-colors ${
-          index < (hover || rating) ? 'text-yellow-400 fill-current' : 'text-gray-300 hover:text-yellow-200'
-        }`}
+        className={`cursor-pointer transition-colors ${index < (hover || rating) ? 'text-yellow-400 fill-current' : 'text-gray-300 hover:text-yellow-200'
+          }`}
         onClick={() => onRate(index + 1)}
         onMouseEnter={() => onHover(index + 1)}
         onMouseLeave={() => onHover(0)}
@@ -85,7 +84,7 @@ const Testimonials: React.FC = () => {
       const message = `Olá! Queremos deixar nossa avaliação:\n\n⭐ Avaliação: ${userRating}/5 estrelas\n👤 Nome: ${userName}\n🏢 Empresa: ${userBusiness || 'Não informado'}\n💬 Comentário: ${reviewText}`;
       const whatsappUrl = `https://wa.me/5515988213309?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
-      
+
       // Reset form and hide it
       setUserRating(0);
       setHoverRating(0);
@@ -111,11 +110,11 @@ const Testimonials: React.FC = () => {
   const handleContactSubmit = async () => {
     try {
       await saveContactForm(contactForm);
-      
+
       // Reset form and close popup
       setContactForm({ name: '', whatsapp: '', segment: '' });
       setShowContactPopup(false);
-      
+
       // Mostrar popup de sucesso
       setShowSuccessPopup(true);
     } catch (error) {
@@ -164,19 +163,19 @@ const Testimonials: React.FC = () => {
                       {testimonials[currentTestimonial].businessType}
                     </span>
                   </div>
-                  
+
                   {/* Quote */}
                   <p className="text-gray-300 text-lg mb-6 italic leading-relaxed text-center">
                     "{testimonials[currentTestimonial].quote}"
                   </p>
-                  
+
                   {/* Result */}
                   <div className="bg-green-500/20 border border-green-500/30 rounded-lg px-4 py-3 mb-6 text-center">
                     <p className="text-base font-medium text-green-300">
                       📈 {testimonials[currentTestimonial].result}
                     </p>
                   </div>
-                  
+
                   {/* Author */}
                   <div className="border-t border-white/20 pt-4 text-center">
                     <h4 className="font-semibold text-white text-lg">{testimonials[currentTestimonial].name}</h4>
@@ -200,11 +199,10 @@ const Testimonials: React.FC = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial
-                      ? 'bg-blue-400 scale-125'
-                      : 'bg-white/30 hover:bg-white/50'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentTestimonial
+                    ? 'bg-blue-400 scale-125'
+                    : 'bg-white/30 hover:bg-white/50'
+                    }`}
                 />
               ))}
             </div>
@@ -290,103 +288,110 @@ const Testimonials: React.FC = () => {
 
 
         </div>
-        </div>
+      </div>
 
-        {/* Contact Popup Modal */}
-        {showContactPopup && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-              <div className="p-6">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900">Chame no Whatsapp</h3>
-                  <button
-                    onClick={() => setShowContactPopup(false)}
-                    className="text-gray-400 hover:text-gray-600 transition-colors"
-                  >
-                    <X size={24} />
-                  </button>
-                </div>
+      {/* Contact Popup Modal */}
+      {showContactPopup && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Header */}
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold flex items-center space-x-1">
+                  <img
+                    src="/botneural_logo.png"
+                    alt="Resultados de automação de vendas"
+                    className="w-8 h-8"
+                  />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
+                </h3>
+                <button
+                  onClick={() => setShowContactPopup(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
 
-                {/* Form */}
+              {/* Form */}
+              <div className="space-y-4">
                 <div className="space-y-4">
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Nome</label>
-                      <input
-                        type="text"
-                        placeholder="Seu nome"
-                        value={contactForm.name}
-                        onChange={(e) => handleContactFormChange('name', e.target.value)}
-                        className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                      />
-                      <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
-                        <User size={14} className="text-blue-400" />
-                        Como você gostaria de ser chamado?
-                      </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Nome</label>
+                    <input
+                      type="text"
+                      placeholder="Seu nome"
+                      value={contactForm.name}
+                      onChange={(e) => handleContactFormChange('name', e.target.value)}
+                      className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
+                    />
+                    <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
+                      <User size={14} className="text-blue-400" />
+                      Como você gostaria de ser chamado?
                     </div>
+                  </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">WhatsApp</label>
-                      <input
-                        type="tel"
-                        placeholder="(11) 91231-2312"
-                        value={contactForm.whatsapp}
-                        onChange={(e) => handleContactFormChange('whatsapp', e.target.value)}
-                        className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                      />
-                      <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
-                        <Phone size={14} className="text-blue-400" />
-                        Número com DDD para contato direto
-                      </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">WhatsApp</label>
+                    <input
+                      type="tel"
+                      placeholder="(11) 91231-2312"
+                      value={contactForm.whatsapp}
+                      onChange={(e) => handleContactFormChange('whatsapp', e.target.value)}
+                      className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
+                    />
+                    <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
+                      <Phone size={14} className="text-blue-400" />
+                      Número com DDD para contato direto
                     </div>
+                  </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Segmento</label>
-                      <input
-                        type="text"
-                        placeholder="Segmento do seu negócio"
-                        value={contactForm.segment}
-                        onChange={(e) => handleContactFormChange('segment', e.target.value)}
-                        className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                      />
-                      <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
-                        <Building size={14} className="text-blue-400" />
-                        Ex: E-commerce, Consultoria, Clínica, etc.
-                      </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Segmento</label>
+                    <input
+                      type="text"
+                      placeholder="Segmento do seu negócio"
+                      value={contactForm.segment}
+                      onChange={(e) => handleContactFormChange('segment', e.target.value)}
+                      className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
+                    />
+                    <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
+                      <Building size={14} className="text-blue-400" />
+                      Ex: E-commerce, Consultoria, Clínica, etc.
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                  <button
-                    onClick={() => setShowContactPopup(false)}
-                    className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    onClick={handleContactSubmit}
-                    disabled={!contactForm.name || !contactForm.whatsapp || !contactForm.segment}
-                    className="flex-1 px-6 py-3 bg-gradient-primary text-white rounded-lg hover:opacity-90 transition-opacity font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    Enviar
-                  </button>
-                </div>
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                <button
+                  onClick={() => setShowContactPopup(false)}
+                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleContactSubmit}
+                  disabled={!contactForm.name || !contactForm.whatsapp || !contactForm.segment}
+                  className="flex-1 px-6 py-3 bg-gradient-primary text-white rounded-lg hover:opacity-90 transition-opacity font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Enviar
+                </button>
               </div>
             </div>
           </div>
-        )}
-        
-        {/* Popup de sucesso */}
-        <SuccessPopup 
-          isOpen={showSuccessPopup}
-          onClose={() => setShowSuccessPopup(false)}
-          message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
-        />
-      </section>
-    );
+        </div>
+      )}
+
+      {/* Popup de sucesso */}
+      <SuccessPopup
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+      />
+    </section>
+  );
 };
 
 export default Testimonials;

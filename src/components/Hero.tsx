@@ -1,177 +1,69 @@
 import React, { useState } from 'react';
-import { MessageCircle, Calendar, X, User, Phone, Building } from 'lucide-react';
-import { saveContactForm } from '../lib/supabase';
-import { SuccessPopup } from './SuccessPopup';
+import { ArrowRight, Bot, Globe } from 'lucide-react';
+import { ContactModal } from './ContactModal';
 
 const Hero: React.FC = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
-  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const [contactForm, setContactForm] = useState({
-    name: '',
-    whatsapp: '',
-    segment: ''
-  });
-
-  const handleContactFormChange = (field: string, value: string) => {
-    setContactForm(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleContactSubmit = async () => {
-    try {
-      // Salvar no Supabase
-      await saveContactForm({
-        name: contactForm.name,
-        whatsapp: contactForm.whatsapp,
-        segment: contactForm.segment
-      });
-      
-      // Reset form and close popup
-      setContactForm({ name: '', whatsapp: '', segment: '' });
-      setShowContactPopup(false);
-      
-      // Mostrar popup de sucesso
-      setShowSuccessPopup(true);
-    } catch (error) {
-      console.error('Erro ao salvar dados:', error);
-      alert('Erro ao salvar dados. Tente novamente.');
-    }
-  };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative px-4 bg-gradient-hero pt-20">
-      <div className="container mx-auto text-center">
-        <div className="max-w-4xl mx-auto relative z-0">
-          {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Sites
-            </span>{' '}
-            e{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Automações
-            </span>{' '}
-            que Vendem 24h
-          </h1>
+    <section id="hero" className="min-h-screen flex items-center justify-center relative px-4 pt-32 pb-20 overflow-hidden bg-black">
+      {/* Ambient glows refined for less noise */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-600/10 rounded-[100%] blur-[120px] opacity-70" />
+      </div>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-          <span className="text-blue-400">Botneural - Especialista em Desenvolvimento Web e Automação com IA.</span> Crio sites profissionais e automações inteligentes para WhatsApp que <span className="text-blue-400">trabalham 24h por você</span>.
-        </p>
-
-          {/* CTA Button */}
-          <div className="flex justify-center mb-8">
-            <button
-              onClick={() => setShowContactPopup(true)}
-              className="inline-flex items-center space-x-3 bg-gradient-primary text-white px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-jair-blue/25 hover:shadow-jair-blue/40 hover:-translate-y-0.5 text-xl font-semibold"
-            >
-              <MessageCircle className="w-7 h-7" />
-              <span>Agende uma conversa gratuita</span>
-            </button>
+      <div className="container mx-auto text-center relative z-10">
+        <div className="max-w-4xl mx-auto">
+          {/* Eyebrow label - More subtle */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-300 text-xs font-semibold tracking-widest uppercase mb-10 backdrop-blur-sm shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+            Arquitetura Operacional Digital
           </div>
 
-          {/* Trust Badge */}
-          <div className="mb-12">
-            <p className="text-sm text-gray-400 mb-2">✅ Consultoria inicial gratuita</p>
-            <p className="text-sm text-gray-400">🤖 Agente de IA disponível 24h no WhatsApp para tirar dúvidas</p>
+          {/* Main Title - Adjusted letter spacing and line height for premium feel */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold text-white mb-8 leading-[1.05] tracking-tight">
+            Sua empresa com{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              Automação Inteligente
+            </span>{' '}
+            e Sites Estratégicos.
+          </h1>
+
+          {/* Subtitle - Exact matching user request */}
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+            Implementamos uma estrutura digital que organiza atendimento, fortalece sua presença online e traz previsibilidade ao crescimento.
+          </p>
+
+          {/* CTA Layout */}
+          <div className="flex flex-col items-center justify-center gap-8 mb-12">
+            <button
+              onClick={() => setShowContactPopup(true)}
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-10 py-5 rounded-2xl transition-all duration-300 hover:from-blue-500 hover:to-cyan-500 hover:scale-105 shadow-[0_8px_30px_rgb(37,99,235,0.25)] text-lg font-semibold"
+            >
+              <span>Solicitar Diagnóstico Estratégico</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+
+            {/* Bullets - Clearer visual connection */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 opacity-80">
+              <div className="flex items-center gap-2.5 text-gray-300 text-sm font-medium tracking-wide">
+                <Bot className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <span>IA no WhatsApp</span>
+              </div>
+              <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-gray-700" />
+              <div className="flex items-center gap-2.5 text-gray-300 text-sm font-medium tracking-wide">
+                <Globe className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                <span>Sites Profissionais</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Contact Popup Modal */}
-      {showContactPopup && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto backdrop-blur-md">
-            <div className="p-8">
-              {/* Header */}
-               <div className="flex justify-between items-center mb-6">
-                 <h3 className="text-2xl font-bold">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
-                  </h3>
-                 <button
-                    onClick={() => setShowContactPopup(false)}
-                    className="text-gray-300 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
-                  >
-                    <X size={24} />
-                  </button>
-               </div>
-
-              {/* Form */}
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Nome</label>
-                  <input
-                    type="text"
-                    placeholder="Seu nome"
-                    value={contactForm.name}
-                    onChange={(e) => handleContactFormChange('name', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                  />
-                  <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
-                    <User size={14} className="text-blue-400" />
-                    Como você gostaria de ser chamado?
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">WhatsApp</label>
-                  <input
-                    type="tel"
-                    placeholder="(11) 91231-2312"
-                    value={contactForm.whatsapp}
-                    onChange={(e) => handleContactFormChange('whatsapp', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                  />
-                  <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
-                    <Phone size={14} className="text-blue-400" />
-                    Número com DDD para contato direto
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Segmento</label>
-                  <input
-                    type="text"
-                    placeholder="Segmento do seu negócio"
-                    value={contactForm.segment}
-                    onChange={(e) => handleContactFormChange('segment', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/10 border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all text-white placeholder-gray-400 backdrop-blur-sm"
-                  />
-                  <div className="mt-2 text-xs text-gray-400 flex items-center gap-2">
-                    <Building size={14} className="text-blue-400" />
-                    Ex: E-commerce, Consultoria, Clínica, etc.
-                  </div>
-                </div>
-              </div>
-
-              {/* Buttons */}
-               <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                 <button
-                   onClick={() => setShowContactPopup(false)}
-                   className="flex-1 px-6 py-3 border-2 border-blue-400/50 text-blue-400 rounded-lg hover:bg-blue-400/10 transition-all font-medium backdrop-blur-sm"
-                 >
-                   Cancelar
-                 </button>
-                 <button
-                   onClick={handleContactSubmit}
-                   disabled={!contactForm.name || !contactForm.whatsapp || !contactForm.segment}
-                   className="flex-1 px-6 py-3 bg-gradient-primary text-white rounded-lg hover:opacity-90 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-jair-blue/25"
-                 >
-                   Enviar
-                 </button>
-               </div>
-
-               {/* Footer Message */}
-               <p className="text-gray-300 text-sm text-center mt-4">Preencha os dados abaixo e entraremos em contato</p>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Popup de sucesso */}
-      <SuccessPopup 
-        isOpen={showSuccessPopup}
-        onClose={() => setShowSuccessPopup(false)}
-        message="Sua mensagem foi enviada com sucesso! Em breve entraremos em contato."
+      <ContactModal
+        isOpen={showContactPopup}
+        onClose={() => setShowContactPopup(false)}
+        source="hero"
       />
     </section>
   );

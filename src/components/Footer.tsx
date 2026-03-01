@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 inline-block">Botneural</span>
             </div>
             <p className="text-gray-400 mb-6">
-              Desenvolvimento de sites inteligentes e automações com IA para transformar seu negócio.
+              Plataforma completa de vendas automatizadas e sites de alta conversão.
             </p>
             <div className="flex space-x-4">
               <a
@@ -53,12 +53,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById('hero');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToSection('hero')}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
                   Início
@@ -66,12 +61,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById('services');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToSection('services')}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
                   Serviços
@@ -79,12 +69,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById('about');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToSection('about')}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
                   Sobre
@@ -92,12 +77,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById('faq');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToSection('faq')}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
                   FAQ
@@ -105,12 +85,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById('contact-section');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToSection('contact-section')}
                   className="text-gray-400 hover:text-blue-400 transition-colors"
                 >
                   Contato
